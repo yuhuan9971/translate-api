@@ -1,5 +1,6 @@
 require('dotenv').config()
 const cors = require('cors')
+const { text } = require('express')
 const express = require('express')
 const translate = require('./utils/translate')
 const app = express()
@@ -8,9 +9,10 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.get('/translate', async (req, res)=> {
+app.post('/translate', async (req, res)=> {
+    const {text, options} = req.body
     try {
-        const resData = await translate()
+        const resData = await translate(text, options)
         res.send(resData)
     }catch (err) {
         console.log(err)

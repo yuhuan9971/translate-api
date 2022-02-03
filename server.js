@@ -9,7 +9,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const multiLang = ['en', 'zh-TW', 'ko', 'ja']
+const multiLang = ['en', 'zh-tw', 'ko', 'ja']
 
 app.post('/translate', async (req, res)=> {
     const {text, options} = req.body
